@@ -8,6 +8,7 @@ const ChapterSchema = mongoose.Schema({
 		},
 	],
 	number: Number,
+	link: Array,
 });
 
 const ChapterModel = mongoose.model('Chapter', ChapterSchema);
