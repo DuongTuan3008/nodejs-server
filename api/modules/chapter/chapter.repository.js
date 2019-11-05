@@ -1,24 +1,19 @@
 const mongoose = require('mongoose');
 
 const ChapterSchema = mongoose.Schema({
-	books: [
-		{
-			type: mongoose.Schema.Types.ObjectId,
-			ref: "Book",
-		},
-	],
+	book: String,
 	number: Number,
-	link: Array,
+	link: Array
 });
 
 const ChapterModel = mongoose.model('Chapter', ChapterSchema);
 
 const find = async function (query) {
-	return await ChapterModel.find(query).populate('books');
+	return await ChapterModel.find(query);
 };
 
 const findById = async function (id) {
-	return await ChapterModel.findById(id).populate('books');
+	return await ChapterModel.findById(id);
 };
 
 const create = async function (data) {

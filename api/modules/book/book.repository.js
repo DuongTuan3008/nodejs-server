@@ -6,16 +6,20 @@ const BookSchema = mongoose.Schema({
   description: String,
   author: String,
   avalink: String,
+  chapter: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Chapter",
+  }],
 });
 
 const BookModel = mongoose.model('Book', BookSchema);
 
 const find = async function (query) {
-  return await BookModel.find(query);
+  return await BookModel.find(query).populate("chapters");
 }
 
 const findById = async function (id) {
-  return await BookModel.findById(id);
+  return await BookModel.findById(id).populate("chapters");
 }
 
 const create = async function (data) {
