@@ -9,7 +9,8 @@ const cors = require('cors');
 // const authRouter = require('./api/modules/auth/auth.router');
 
 mongoose.connect(config.mongoConnectionString);
-const PORT = 6969;
+const port = process.env.PORT || 6969;
+
 
 const app = express();
 app.use(cors());
@@ -21,6 +22,6 @@ app.use('/api/user', userRouter);
 
 // app.use('/api/auth', authRouter);
 
-app.listen(PORT, function () {
-	console.log(`Server is listening on ${PORT}`);
+app.listen(port, function () {
+	console.log(`Server is listening on ${port}`);
 });
